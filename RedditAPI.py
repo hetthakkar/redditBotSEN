@@ -16,6 +16,7 @@ import time
 import threading
 import json
 import datetime
+from flask import Flask
 import os
 
 
@@ -199,6 +200,9 @@ def handle_posts(reddit):
 
 if __name__ == '__main__':
     
+    
+    app = Flask(__name__)
+    app.run(host= '0.0.0.0', port = os.environ.get('PORT'))
     c_id = os.environ['c_id']
     c_secret = os.environ['c_secret']
     r_password = os.environ['r_password']
