@@ -25,10 +25,7 @@ import os
 
 from firebase import firebase 
 
-# authentication = firebase.FirebaseAuthentication('THIS_IS_MY_SECRET', 'het.thakkar809@gmail.com', extra={'id': '5sVnwbW5lwUdPsOUkWWXle1UwWF2'})
-# firebase.authentication = authentication
-# user = authentication.get_user()
-# print(user.firebase_auth_token)
+
 
 firebase = firebase.FirebaseApplication('https://complaintsapp-cfa95.firebaseio.com/', None)
 #result = firebase.get('/twittercomplaints/complaint1', None)
