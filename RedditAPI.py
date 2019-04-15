@@ -169,7 +169,7 @@ def handle_posts(reddit, skey):
             print('Passing text : ' + text)
             if(isValid):
                 
-                isValidCall, ctype, score = getType('body', skey)
+                isValidCall, ctype, score = getType(body, skey)
                 
                 if(not isValidCall):
                     print('Unable to get type from API')
