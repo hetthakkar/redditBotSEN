@@ -192,7 +192,7 @@ def handle_posts(reddit, skey):
                     'postID' : post.id,
                     'Body' : body,
                     'IssuerID' : userName.id,
-                    'IssuerUsername' : userName.name,
+                    'IssuerName' : userName.name,
                     'Location' : location,
                     'platform' : 'Reddit',
                     'Timestamp' : str(1000*int(datetime.datetime.now().timestamp())),
