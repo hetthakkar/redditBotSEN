@@ -63,6 +63,9 @@ def checkPost(post_text):
         body = post_text[p[0]+5:p[1]-1]
         location = post_text[p[1]+9:]
     
+    if(len(body) < 3):
+        return False,-1,-1
+    
     return True,location,body
     
 
@@ -214,16 +217,12 @@ def handle_posts(reddit, skey):
 
 if __name__ == '__main__':
     
-    # c_id = os.environ['c_id']
-    # c_secret = os.environ['c_secret']
-    # r_password = os.environ['r_password']
-    # skey = os.environ['sub_key']
+    c_id = os.environ['c_id']
+    c_secret = os.environ['c_secret']
+    r_password = os.environ['r_password']
+    skey = os.environ['sub_key']
 
     
-    c_id = 'VAlWtWHwGfGeUg'
-    c_secret = 'AsGluK8TkxyRPa-ZIwP2KD-LAfA'
-    r_password = 'comp11$$'
-    skey = '34a959e65faa4951b564b6ef3c66de81'
     
     reddit = praw.Reddit(client_id = c_id,
                      client_secret = c_secret,
