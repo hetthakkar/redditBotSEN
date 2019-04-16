@@ -113,7 +113,8 @@ def handle_replies(reddit):
                         not_replied.remove(i)
                         continue
                     
-                    post.reply('Your complaint has been accepted. For updates, go to : test.com/abc')
+                    reply_text = 'Your complaint has been approved by the complaints manager. Here\'s the link to track it: https://complaintsapp-cfa95.firebaseapp.com/track/' + str(i)
+                    post.reply(reply_text)
                     print('replied accepted')
                     not_replied.remove(i)
                     userName = post.author
@@ -132,7 +133,7 @@ def handle_replies(reddit):
                     post = Submission(reddit, complaint['postID'])
                     post = reddit.submission(post)
                     userName = post.author
-                    reddit.redditor(userName.name).message('Regarding Complaint', 'Your complaint was rejected by the manager')
+                    reddit.redditor(userName.name).message('Regarding Complaint', 'We\'re sorry to inform you that your complaint posted on r/ComplaintsApp has been rejected by the complaints manager. To have your complaint approved, please post it again and make sure you use the proper format.')
                     post.mod.remove()
                     not_replied.remove(i)
                     firebase.delete('/twittercomplaints/',str(i))
@@ -184,7 +185,7 @@ def handle_posts(reddit, skey):
             
             
             if(isValid == False):
-                reddit.redditor(userName.name).message('Regarding Complaint', 'Your complaint did not match the required format and was deleted. Please take a look at the required format in the community information and post again')
+                reddit.redditor(userName.name).message('Regarding Complaint', 'Your complaint did not match the required format and was deleted. Please take a look at the instructions in the community information or log on to https://complaintsapp-cfa95.firebaseapp.com/instructions')
                 post.mod.remove()
             else:
                 submission.reply('Your complaint is being processed by our manager and will be responded to soon')
@@ -213,11 +214,16 @@ def handle_posts(reddit, skey):
 
 if __name__ == '__main__':
     
-    c_id = os.environ['c_id']
-    c_secret = os.environ['c_secret']
-    r_password = os.environ['r_password']
-    skey = os.environ['sub_key']
+    # c_id = os.environ['c_id']
+    # c_secret = os.environ['c_secret']
+    # r_password = os.environ['r_password']
+    # skey = os.environ['sub_key']
 
+    
+    c_id = 'VAlWtWHwGfGeUg'
+    c_secret = 'AsGluK8TkxyRPa-ZIwP2KD-LAfA'
+    r_password = 'comp11$$'
+    skey = '34a959e65faa4951b564b6ef3c66de81'
     
     reddit = praw.Reddit(client_id = c_id,
                      client_secret = c_secret,
