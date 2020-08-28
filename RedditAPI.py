@@ -84,7 +84,6 @@ def getType(complaintBody, skey ):
     }
 
     try:
-        r = requests.get('https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/081c52cc-c0eb-4d30-a68f-a6d3945d4519?verbose=true&timezoneOffset=-360',headers=headers, params=params)
         #print(r.json())
         intent = r.json()['topScoringIntent']['intent']
         score = r.json()['topScoringIntent']['score']
